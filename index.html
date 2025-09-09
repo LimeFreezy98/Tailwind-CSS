@@ -1,35 +1,80 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>TailWind CSS</title>
+        <title>TailWind-css</title>
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
     <body class="bg-black text-white">
     
         <!-- background preview -->
-        <div class="relative h-screen w-full">
+        <div class="relative min-h-screen w-full">
             <img src="Image/netflexBackground.jpeg" alt="Netflex Background preview" 
             class="absolute inset-0 w-full h-full object-cover opacity-50">
 
             <!-- logo and top navbar -->
-            <div class="relative flex justify-between items-center px-8 py-4">
+            <div class="relative flex justify-between items-center px-8 py-4 z-30">
                 <img src="Image/netflixLogo.png" alt="Netflex logo" class="h-10">
-                <div>
-                    <button class="bg-black px-5 py-1 text-white font-semibold"> English</button>
-                  <button class="bg-red-600 px-4 py-1 rounded text-white font-semibold">Sign In</button>
+                <div class="flex items-center space-x-3">
+                    <!-- language selection -->
+                    <div class="relative">
+                        <button  id="langBtn" class="flex items-center border border-white px-4 py-1 rounded text-white font-semibold bg-black">
+                        English
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                        </svg>
+                        </button>
+                        <!-- dropdown language effect  --> 
+                        <div id="langMenu" class="absolute hidden bg-black border border-white mt-1 rounded w-full z-50">
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-800">English</a>
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-800">Español</a>    <!-- Spanish -->
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-800">Français</a>   <!-- Franch -->
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-800">Deutsch</a>   <!-- German -->
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-800">українська</a> <!-- Ukrainian -->
+                             <a href="#" class="block px-4 py-2 hover:bg-gray-800">한국인</a>  <!-- Korean -->
+                             <a href="#" class="block px-4 py-2 hover:bg-gray-800">日本語</a> <!-- Japannese -->
+                            <a href="#" class="block px-4 py-2 hover:bg-gray-800">Русский</a>  <!-- Russian -->
+                           
+
+                        </div>
+                    </div>
+                    
+                  <button id="signInBtn" class="bg-red-600 px-4 py-1 rounded text-white font-semibold">Sign In</button>
                 </div>
             </div>
 
 
             <!-- center motto -->
-            <div class="flex-col items-center justify-center text-center h-full relative z-10 px-4">
+            <div class="relative z-10 flex flex-col items-center justify-center text-center min-h-screen px-4">
                 <h1 class="text-4xl md:text-5x1 font-bold">Unlimited movies, TV shows, and more.</h1>
                 <p class="mt-4 text-lg">Watch anywhere. Cancel anytime.</p>
                 <p class="mt-2 text-md">Ready to watch? Enter your email to create or restart your membership.</p>
+
+                <!-- email form -->
+                <div class="mt-4 flex w-full max-w-md">
+                    <input type="email" placeholder="Email address" class="flex-1 p-3 rounded-l text-black">
+                    <button  id="getStartedBtn" class="bg-red-600 px-6 py-3 rounded-r text-white font-semibold">Get started</button>
+                </div>
             </div>
+        </div>
             
-
-
+        <script>
+            const btn = document.getElementById("langBtn");
+            const menu = document.getElementById("langMenu");
+        
+            btn.addEventListener("click", () => {
+              menu.classList.toggle("hidden");
+            });
+        
+            // Optional: close dropdown if clicked outside
+            document.addEventListener("click", (event) => {
+              if (!btn.contains(event.target) && !menu.contains(event.target)) {
+                menu.classList.add("hidden");
+              }
+            });
+          </script>
+        
+        <script src="index.js"></script>
+        
 
         </div>
 
